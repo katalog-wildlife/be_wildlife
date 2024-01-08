@@ -11,13 +11,13 @@ import (
 	model "github.com/katalog-wildlife/be_wildlife/model"
 )
 
-func Encode(id primitive.ObjectID, fullname, privateKey string) (string, error) {
+func Encode(id primitive.ObjectID, email, privateKey string) (string, error) {
 	token := paseto.NewToken()
 	token.SetIssuedAt(time.Now())
 	token.SetNotBefore(time.Now())
 	token.SetExpiration(time.Now().Add(2 * time.Hour))
 	token.Set("id", id)
-	token.SetString("fullname", fullname)
+	token.SetString("email", email)
 	secretKey, err := paseto.NewV4AsymmetricSecretKeyFromHex(privateKey)
 	return token.V4Sign(secretKey, nil), err
 }
