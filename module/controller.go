@@ -398,7 +398,7 @@ func PostAnimal(db *mongo.Database, col string, r *http.Request) (bson.M, error)
 	// 	return bson.M{}, fmt.Errorf("nomor telepon tidak valid")
 	// }
 
-	imageUrl, err := intermoni.SaveFileToGithub("AdeCandra12", "ade.can321@gmail.com", "image-wildlife", "manja", r)
+	imageUrl, err := intermoni.SaveFileToGithub("AdeCandra12", "ade.can321@gmail.com", "image-wildlife", "wildlife", r)
 	if err != nil {
 		return bson.M{}, fmt.Errorf("error save file: %s", err)
 	}

@@ -23,10 +23,10 @@ func TestGenerateKey(t *testing.T) {
 func TestSignUp(t *testing.T) {
 	conn := db
 	var user model.User
-	user.Fullname = "Ade"
-	user.Email = "adecand12@gmail.com"
-	user.Password = "12345678"
-	user.PhoneNumber = "6285718177810"
+	user.Fullname = "Admin"
+	user.Email = "admin@gmail.com"
+	user.Password = "admin123"
+	user.PhoneNumber = "31162877"
 	email, err := module.SignUp(conn, collectionnameUser, user)
 	if err != nil {
 		fmt.Println(err)
@@ -38,8 +38,8 @@ func TestSignUp(t *testing.T) {
 func TestLogIn(t *testing.T) {
 	conn := db
 	var user model.User
-	user.Email = "adecand12@gmail.com"
-	user.Password = "12345678"
+	user.Email = "admin@gmail.com"
+	user.Password = "admin123"
 	user, err := module.LogIn(conn, collectionnameUser, user)
 	if err != nil {
 		fmt.Println(err)
@@ -49,8 +49,8 @@ func TestLogIn(t *testing.T) {
 }
 
 func TestToken(*testing.T) {
-	token := "v4.public.eyJleHAiOiIyMDI0LTAxLTA0VDExOjI1OjU0WiIsImZ1bGxuYW1lIjoiYWRtaW5AZ21haWwuY29tIiwiaWF0IjoiMjAyNC0wMS0wNFQwOToyNTo1NFoiLCJpZCI6IjY1OTY1ZWNkY2MxOGQxNmNkNGNhNGY4YSIsIm5iZiI6IjIwMjQtMDEtMDRUMDk6MjU6NTRaIn22kA21UMcQv-6lNrkBu88rV3XGGgToTBqulQui3HrZcYb_Go-qyCBdzje7Qg3Omj-hI5lXRRFj1afCzeMdyG0B"
-	tokenstring, err := module.Decode("dc9a05bd1679ffa792336245874399894f513a9d38a0f108907c2d6713fc4db5", token)
+	token := "v4.public.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImV4cCI6IjIwMjQtMDEtMDlUMTQ6Mzk6MjhaIiwiaWF0IjoiMjAyNC0wMS0wOVQxMjozOToyOFoiLCJpZCI6IjY1OWQzYWRjOTVmOTQwOGQ1ZjJhOWZjNSIsIm5iZiI6IjIwMjQtMDEtMDlUMTI6Mzk6MjhaIn0Q-sAF1CnvrThJBwXD68qSxXCNeeAUhS2FrG0dvXifMnh6f98wKoMs3QVfKtTdN-lnzBcKyKaAmLNIYhNYIrIE"
+	tokenstring, err := module.Decode("4300ff0dbdf378880ad20cc7751fb1657583d2c1db9305f6a019dfe30086f00a", token)
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -81,6 +81,7 @@ func TestTambahAnimal(t *testing.T) {
 		JumlahPopulasi: "400",
 		LokasiPopulasi: "Sumatera",
 		Status:         "Terancam Punah",
+		Description:    "Harimau Sumatera (Panthera tigris sumatrae) adalah subspesies harimau yang hidup di pulau Sumatera dan diakui sebagai subspesies yang terancam punah.",
 		Image:          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Sumatran_Tiger_2_-_Buffalo_Zoo.jpg/1200px-Sumatran_Tiger_2_-_Buffalo_Zoo.jpg",
 	})
 	if err != nil {
@@ -103,6 +104,7 @@ func TestUpdateAnimal(t *testing.T) {
 		JumlahPopulasi: "300",
 		LokasiPopulasi: "Sumatera",
 		Status:         "Terancam Punah",
+		Description:    "Harimau Sumatera (Panthera tigris sumatrae) adalah subspesies harimau yang hidup di pulau Sumatera dan diakui sebagai subspesies yang terancam punah.",
 		Image:          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Sumatran_Tiger_2_-_Buffalo_Zoo.jpg/1200px-Sumatran_Tiger_2_-_Buffalo_Zoo.jpg",
 	})
 	if err != nil {
